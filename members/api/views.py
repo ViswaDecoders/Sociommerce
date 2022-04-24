@@ -23,9 +23,9 @@ class login_user(APIView):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return Response({'login':'successful'})
+                return Response({'login':username})
             else:
-                return Response({'login':'unsuccessful'})
+                return Response({'login':None})
         
     def get(self, request):
         return Response({'Allowed':'POST'})
@@ -44,9 +44,9 @@ class register_user(APIView):
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
             login(request, user)
-            return Response({'Registration':'successful'})
+            return Response({'registration':'successful'})
         else:
-            return Response({'Registration':'unsuccessful, Invalid Form data'})
+            return Response({'registration':'unsuccessful, Invalid form data'})
 
 class logout_user(APIView):
     def post(self, request):
