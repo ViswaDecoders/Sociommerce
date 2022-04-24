@@ -1,9 +1,9 @@
 from django.db import models
 
 
-class Promotion(models.Model):
-    description = models.CharField(max_length=255)
-    discount = models.FloatField()
+# class Promotion(models.Model):
+#     description = models.CharField(max_length=255)
+#     discount = models.FloatField()
 
 
 class Collection(models.Model):
@@ -16,13 +16,13 @@ class Collection(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField()
-    description = models.TextField()
+    slug = models.SlugField(default=None)
+    description = models.TextField(default=None)
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField()
     last_update = models.DateTimeField(auto_now=True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
-    promotions = models.ManyToManyField(Promotion)
+    # promotions = models.ManyToManyField(Promotion, null=True)
     product_img = models.ImageField(upload_to="uploads/products/%Y/%m/%d",default=None)
     def __str__(self):
         return self.title

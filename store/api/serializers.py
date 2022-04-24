@@ -4,9 +4,19 @@ from store.models import Product, Customer, Profile, Post
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('title','slug','description',"unit_price","inventory","last_update","collection","promotions","product_img")
+        fields = ('id','title','slug','description',"unit_price","inventory","last_update","collection","product_img")
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('profile','img','posted_on')
+        fields = ('id','profile','img','posted_on')
+
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = ('first_name','last_name','email',"phone","birth_date","membership")
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ('customer','name','picture')

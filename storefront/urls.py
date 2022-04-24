@@ -18,11 +18,11 @@ from django.urls import path, include
 import debug_toolbar
 # hello
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('playground/', include('playground.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
-    path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
+    path('members/', include('django.contrib.auth.urls')),
     path("uploads/", include('store.urls')),
     path("api-auth/", include("rest_framework.urls")),
     path("api/", include('store.api.urls')),
