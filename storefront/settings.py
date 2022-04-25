@@ -25,8 +25,10 @@ SECRET_KEY = 'django-insecure-hs6j037urx6iav+7#10%-vu4l4f5@@-1_zo)oft4g7$vf2$jmp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.75','127.0.0.1']
-
+# ALLOWED_HOSTS = ['192.168.116.75','127.0.0.1','192.168.43.46']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['IP', 'subdomain.domain.com']
+# CSRF_TRUSTED_ORIGINS = ['http://*.domain.com']
 
 # Application definition
 
@@ -43,7 +45,7 @@ INSTALLED_APPS = [
     'store',
     'members',
     'tags',
-    'likes'
+    'likes',
 ]
 
 MIDDLEWARE = [
@@ -93,7 +95,7 @@ DATABASES = {
         'NAME': 'storefront',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': 'pass'
+        'PASSWORD': ''
     }
 }
 
@@ -156,6 +158,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.AllowAny'
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
