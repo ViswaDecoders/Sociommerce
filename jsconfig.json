@@ -1,0 +1,5 @@
+// to get work with AUTO IMPORTS
+
+{
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,16 @@
+import React from "react";
+import { View, StyleSheet } from "react-native";
+
+function test(props) {
+  return <View style={styles.container}></View>;
+}
+
+const styles = StyleSheet.create({
+  container: {},
+});
+
+export default test;
+
+// Go to File -> Preferences -> user snippets -> type javascrpt -> code
+
+rnfc;
