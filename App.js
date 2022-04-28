@@ -41,6 +41,7 @@ import NavigationTheme from "./app/navigation/NavigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
+import authStorage from "./app/auth/storage";
 
 // Note :  @react-navigation/stack and /native should be same version to run the app
 
@@ -53,6 +54,15 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [isReady, setIsReady] = useState(false);
 
+  const restoreToken = async () => {
+    const token = await authStorage.getToken();
+    if (!token) return;
+    setUser(token);
+  };
+
+  useEffect(() => {
+    restoreToken();
+  }, []);
   // if (!isReady) return <AppLoading onFinish={() => setIsReady(true)} />;
 
   return (

@@ -15,13 +15,18 @@ import useLocation from "../hooks/useLocation";
 import listingApi from "../api/listing";
 import Screen from "../components/Screen";
 import UploadScreen from "./UploadScreen";
+import ImageInput from "../components/ImageInput";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
   price: Yup.string().required().min(1).max(10000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.object().required().nullable().label("Category"),
-  images: Yup.array().min(1, "Please select atleast ine image.  "),
+  // images: Yup.array().min(1, "Please select atleast ine image.  "),
+  images: Yup.string()
+    .required()
+    .nullable()
+    .min(1, "Please select atleast ine image.  "),
 });
 
 const categories = [
@@ -85,6 +90,10 @@ function ListingEditScreen(props) {
       (progress) => setProgress(progress)
     );
 
+    console.log("====================================");
+    console.log(result.data);
+    console.log("====================================");
+
     if (!result.ok) {
       setUploadVisible(false);
       return alert("couldn't save the listing.");
@@ -107,7 +116,8 @@ function ListingEditScreen(props) {
           price: "",
           description: "",
           categoty: null,
-          images: [],
+          images: null,
+          // images:[],
         }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}

@@ -37,12 +37,14 @@ function ImageInput({ imageUri, onChangeImage }) {
   const selectImage = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
+        // base64: true,
         mediaTypes: ImagePicker.MediaTypeOptions.Images, //to choose images media only
         quality: 0.5, //range of value bwtween 0 to 1, low to high quality
       });
+      console.log(result.uri);
       if (!result.cancelled) onChangeImage(result.uri);
     } catch (error) {
-      console.log("Error reading in image");
+      console.log("Error reading in image", error);
     }
   };
   return (

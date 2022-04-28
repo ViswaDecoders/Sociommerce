@@ -8,6 +8,7 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import routes from "../navigation/routes";
 import authApi from "../api/auth";
+import authStorage from "../auth/storage";
 
 const menuItems = [
   {
@@ -29,6 +30,13 @@ const menuItems = [
 
 function AccountScreen({ navigation }) {
   const { user, setUser } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    authApi.logout();
+    setUser(null);
+    authStorage.removeToken();
+  };
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -65,10 +73,7 @@ function AccountScreen({ navigation }) {
       <ListItem
         title="logout"
         IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
-        onPress={() => {
-          authApi.logout();
-          setUser(null);
-        }}
+        onPress={handleLogOut}
       />
     </Screen>
   );
