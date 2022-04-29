@@ -16,12 +16,12 @@ class Collection(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField(default=None)
-    description = models.TextField(default=None)
+    # slug = models.SlugField(default=None)
+    description = models.TextField(null=True)
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
-    inventory = models.IntegerField()
+    # inventory = models.IntegerField()
     last_update = models.DateTimeField(auto_now=True)
-    collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
+    collection = models.IntegerField()
     # promotions = models.ManyToManyField(Promotion, null=True)
     product_img = models.ImageField(upload_to="uploads/products/%Y/%m/%d",default=None)
     def __str__(self):

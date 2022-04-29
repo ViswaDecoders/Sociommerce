@@ -1,6 +1,22 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, UpdateAPIView
+from rest_framework.views import APIView
 from store.models import Product, Post, Profile, Customer
 from .serializers import ProductSerializer, CustomerSerializer, PostSerializer, ProfileSerializer
+from rest_framework.parsers import MultiPartParser, FormParser
+
+from django.http import JsonResponse
+from rest_framework.response import Response
+from django.middleware.csrf import get_token
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.permissions import AllowAny
+
+
+class csrf(APIView):
+    def get(self,request):
+        k = get_token(request)
+        print(k)
+        return Response({"csrfToken":k})
 
 class ProductListView(ListAPIView):
     queryset=Product.objects.all()
@@ -11,7 +27,11 @@ class ProductDetailView(RetrieveAPIView):
     queryset=Product.objects.all()
     serializer_class = ProductSerializer
 
+
+@method_decorator(csrf_exempt, name='dispatch')
 class makeProduct(CreateAPIView):
+    parser_classes = (MultiPartParser, FormParser)
+    permission_classes = [AllowAny]
     queryset=Product.objects.all()
     serializer_class = ProductSerializer
     # if request.method == "POST":

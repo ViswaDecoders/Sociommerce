@@ -11,8 +11,8 @@ class login_user(APIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
     def post(self, request, format=None):
-        if not self.request.session.exists(self.request.session.session_key):
-            self.request.session.create()
+        # if not self.request.session.exists(self.request.session.session_key):
+        #     self.request.session.create()
         print("Request : ",end="")
         print(request.data)
         serializer = self.serializer_class(data=request.data)

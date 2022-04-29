@@ -2,9 +2,10 @@ from rest_framework import serializers
 from store.models import Product, Customer, Profile, Post
 
 class ProductSerializer(serializers.ModelSerializer):
+    # product_img = serializers.ImageField(required=False,use_url=True,max_length=None)
     class Meta:
         model = Product
-        fields = ('id','title','slug','description',"unit_price","inventory","last_update","collection","product_img")
+        fields = ('id','title','description',"unit_price","last_update","collection","product_img")
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
