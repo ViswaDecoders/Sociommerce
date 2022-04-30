@@ -1,9 +1,0 @@
-mysql --user root --password --host localhost
-
-mysql --user admin --password --host storefront-dbms.cdbuegawfxyd.us-east-1.rds.amazonaws.com
-
-
-
-Moniting service
-SNS or SQS
-Encryotion
