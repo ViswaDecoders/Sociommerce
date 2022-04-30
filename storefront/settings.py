@@ -98,27 +98,27 @@ WSGI_APPLICATION = 'storefront.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'storefront',
-        'HOST': 'localhost',
-        'USER': 'root',
-        'PASSWORD': ''
-    }
-}
-
-# to connect to AWS RDS
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'storefront',
-#         'HOST': 'storefront-dbms.cdbuegawfxyd.us-east-1.rds.amazonaws.com',
-#         'USER': 'admin',
-#         'PASSWORD': 'administrator'
+#         'HOST': 'localhost',
+#         'USER': 'root',
+#         'PASSWORD': ''
 #     }
 # }
+
+# to connect to AWS RDS
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'storefront',
+        'HOST': 'storefront-dbms.cdbuegawfxyd.us-east-1.rds.amazonaws.com',
+        'USER': 'admin',
+        'PASSWORD': 'administrator'
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
