@@ -43,6 +43,13 @@ import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 
+/////////////////////////////////
+// import Amplify from "aws-amplify";
+// import config from "./aws-exports";
+
+// Amplify.configure(config);
+//////////////////////////
+
 // Note :  @react-navigation/stack and /native should be same version to run the app
 
 LogBox.ignoreLogs([
